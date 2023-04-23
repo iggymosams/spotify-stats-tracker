@@ -55,6 +55,9 @@
 	onMount(getRecent);
 </script>
 
+<svelte:head>
+	<title>Listen Time | Spotify Stats</title>
+</svelte:head>
 <div class="flex min-h-screen flex-col p-4">
 	<div class="flex flex-none flex-col items-center justify-center" transition:fade>
 		<h1 class="text-center text-4xl font-bold text-green-500">Listen Time</h1>
