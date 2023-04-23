@@ -1,14 +1,18 @@
 <script>
 	import { fade } from 'svelte/transition';
+	import { goto } from '$app/navigation';
 
 	export let name;
 	export let genres;
 	export let img;
+	export let href;
 </script>
 
-<div
+<a
 	class="flex max-h-full w-1/2 flex-col rounded-lg bg-green-500 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:max-w-xl md:flex-row"
 	transition:fade
+	{href}
+	target="_blank"
 >
 	<img
 		class="rounded-t-lg object-cover md:max-h-20 md:shrink-0 md:rounded-none md:rounded-l-lg"
@@ -19,4 +23,4 @@
 		<h5 class="mb-2 text-xl font-medium">{name}</h5>
 		<p class="text-base">{genres}</p>
 	</div>
-</div>
+</a>

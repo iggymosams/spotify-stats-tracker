@@ -2,7 +2,7 @@
 	<title>Login | Spotify Stats</title>
 	<meta
 		name="description"
-		content="Discover your Spotify listening habits with our app. Get insights on your top tracks, top artists, and the total time you've spent listening. Explore your musical tastes and find new favorites. Try it now!"
+		content="Discover your Spotify listening habits with our app. View your top tracks and artists, and see how much time you've spent listening."
 	/>
 </svelte:head>
 <div class="flex h-screen flex-col items-center justify-center gap-6">

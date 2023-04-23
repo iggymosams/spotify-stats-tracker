@@ -67,14 +67,15 @@
 		const data = await res.json();
 
 		for (let index = 0; index < limit; index++) {
-			const { name, genres, images } = data.items[index];
+			const { name, genres, images, external_urls } = data.items[index];
 
 			artists.update((s) => [
 				...s,
 				{
 					name,
 					genres: titleCase(genres),
-					img: images[1].url
+					img: images[1].url,
+					href: external_urls.spotify
 				}
 			]);
 
@@ -93,8 +94,8 @@
 		<h1 class="text-center text-4xl font-bold text-green-500">Top Artists</h1>
 	</div>
 	<div class="flex grow flex-col items-center justify-start gap-6 py-4" transition:fade>
-		{#each $artists as { genres, name, img }, index}
-			<Artist {genres} {name} {img} />
+		{#each $artists as { genres, name, img, href }, index}
+			<Artist {genres} {name} {img} {href} />
 		{/each}
 	</div>
 	<NavButtons disabled={$artists.length < 5} to="/dashboard" from="/dashboard/top/tracks" />

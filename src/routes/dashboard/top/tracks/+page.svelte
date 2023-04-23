@@ -37,7 +37,8 @@
 				{
 					name: t.name,
 					artist: artists,
-					img: t.album.images[1].url
+					img: t.album.images[1].url,
+					href: t.external_urls.spotify
 				}
 			]);
 			await new Promise((resolve) => setTimeout(resolve, 500));
@@ -57,8 +58,8 @@
 		<h1 class="text-center text-4xl font-bold text-green-500">Top Tracks</h1>
 	</div>
 	<div class="flex grow flex-col items-center justify-start gap-6 py-4" transition:fade>
-		{#each $songs as { artist, name, img }}
-			<Track {artist} {name} {img} />
+		{#each $songs as { artist, name, img, href }}
+			<Track {artist} {name} {img} {href} />
 		{/each}
 	</div>
 	<NavButtons {disabled} to="/dashboard/top/artists" from="/dashboard" />
