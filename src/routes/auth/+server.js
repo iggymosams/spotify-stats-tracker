@@ -1,9 +1,12 @@
-import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '$env/static/private';
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, env } from '$env/static/private';
 
 export async function GET({ url }) {
 	const code = url.searchParams.get('code');
 	const state = url.searchParams.get('state');
-	const redirect_uri = 'https://spotify-stats-tracker-ten.vercel.app/auth/';
+	const redirect_uri =
+		env === 'DEV'
+			? 'http://127.0.0.1:5173/auth/'
+			: 'https://spotify-stats-tracker-ten.vercel.app/auth/';
 
 	if (state === null) {
 		return Response.redirect('/');
@@ -21,7 +24,10 @@ export async function GET({ url }) {
 				body: `grant_type=authorization_code&code=${code}&redirect_uri=${redirect_uri}`
 			});
 			const data = await response.json();
-			const dashboardUrl = new URL('/dashboard', 'https://spotify-stats-tracker-ten.vercel.app/');
+			const dashboardUrl = new URL(
+				'/dashboard',
+				env === 'DEV' ? 'http://127.0.0.1:5173/' : 'https://spotify-stats-tracker-ten.vercel.app/'
+			);
 			dashboardUrl.searchParams.set('access_token', data.access_token);
 			return Response.redirect(dashboardUrl.toString());
 		} catch (error) {
