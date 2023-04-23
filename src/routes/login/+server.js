@@ -5,7 +5,7 @@ export function GET() {
 	const state = getRandomString(16);
 	const scope = 'user-read-private user-read-email user-read-recently-played user-top-read';
 	const url = 'https://accounts.spotify.com/authorize';
-	const redirect_uri = 'http://127.0.0.1:5173/auth/';
+	const redirect_uri = 'https://spotify-stats-tracker-ten.vercel.app/auth/';
 	const params = new URLSearchParams({
 		response_type: 'code',
 		client_id: SPOTIFY_CLIENT_ID,
