@@ -8,7 +8,7 @@ export function GET() {
 	const redirect_uri =
 		env === 'DEV'
 			? 'http://127.0.0.1:5173/auth/'
-			: 'https://spotify-stats-tracker-ten.vercel.app/auth/';
+			: 'https://iggy-spotify-stats-tracker.vercel.app//auth/';
 	const params = new URLSearchParams({
 		response_type: 'code',
 		client_id: SPOTIFY_CLIENT_ID,

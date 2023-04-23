@@ -6,7 +6,7 @@ export async function GET({ url }) {
 	const redirect_uri =
 		env === 'DEV'
 			? 'http://127.0.0.1:5173/auth/'
-			: 'https://spotify-stats-tracker-ten.vercel.app/auth/';
+			: 'https://iggy-spotify-stats-tracker.vercel.app/auth/';
 
 	if (state === null) {
 		return Response.redirect('/');
@@ -26,7 +26,7 @@ export async function GET({ url }) {
 			const data = await response.json();
 			const dashboardUrl = new URL(
 				'/dashboard',
-				env === 'DEV' ? 'http://127.0.0.1:5173/' : 'https://spotify-stats-tracker-ten.vercel.app/'
+				env === 'DEV' ? 'http://127.0.0.1:5173/' : 'https://iggy-spotify-stats-tracker.vercel.app/'
 			);
 			dashboardUrl.searchParams.set('access_token', data.access_token);
 			return Response.redirect(dashboardUrl.toString());
